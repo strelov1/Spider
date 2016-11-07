@@ -1,0 +1,30 @@
+{
+  "name": "grab/spider",
+  "description": "PHP async scrapper used multi curl and reactphp inspired by python grab",
+  "type": "library",
+  "keywords": ["grab", "spider", "crawler", "scraper", "async", "curl", "multi", "parser", "html", "reactphp", "react"],
+  "homepage": "https://github.com/strelov1/Spider",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Ilya Strelov",
+      "email": "strelov1@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0",
+    "khr/react-curl": "*",
+    "react/promise": "~2.0",
+    "react/event-loop": "*",
+    "imangazaliev/didom": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Grab\\": "src/"
+    }
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "*",
+    "codeclimate/php-test-reporter": "dev-master"
+  }
+}

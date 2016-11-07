@@ -1,0 +1,8 @@
+*~
+composer.lock
+.DS_Store
+/vendor/
+.idea/
+logs
+*.swo
+*.swp
