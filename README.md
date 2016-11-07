@@ -3,6 +3,17 @@
 
 PHP async scrapper used multi curl and reactphp inspired by python grab
 
+
+## Installation
+
+To install grab-spider run the command:
+
+```bash
+
+composer require grab/spider "dev-master" 
+    
+```
+
 ## Quick start
 
 ```php    
