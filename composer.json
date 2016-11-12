@@ -1,6 +1,6 @@
 {
   "name": "grab/spider",
-  "description": "PHP async scrapper used multi curl and reactphp inspired by python grab",
+  "description": "PHP async scrapper used multi curl and reactphp, and proxy inspired by python grab",
   "type": "library",
   "keywords": ["grab", "spider", "crawler", "scraper", "async", "curl", "multi", "parser", "html", "reactphp", "react"],
   "homepage": "https://github.com/strelov1/Spider",
@@ -14,7 +14,7 @@
   "require": {
     "php": ">=5.4.0",
     "khr/react-curl": "*",
-    "react/promise": "~2.0",
+    "react/promise": "^2.4",
     "react/event-loop": "*",
     "imangazaliev/didom": "*"
   },

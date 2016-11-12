@@ -6,7 +6,10 @@ class HackerNewCrawler extends \Grab\Spider
 {
     public function taskGenerator()
     {
-        $range = $this->genRange('https://news.ycombinator.com/news?p=%d', 4);
+        $range = array_map(function($item) {
+            return sprintf('https://news.ycombinator.com/news?p=%d', $item);
+        }, range(1, 4)) ;
+
         foreach ($range as $url) {
             $this->task('page', [
                 'url' => $url,
@@ -32,7 +35,7 @@ class HackerNewCrawler extends \Grab\Spider
     public function taskTopic($parser, $task)
     {
         $products = $parser->find('title');
-        echo $products[0]->text() . PHP_EOL;
+        echo trim($products[0]->text()) . PHP_EOL;
     }
 }
 
@@ -41,4 +44,5 @@ $bot->debug = true;
 $bot->setCurlSetting([
     CURLOPT_USERAGENT => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36',
 ]);
+//$bot->loadProxy(__DIR__ . '/proxy_list.txt');
 $bot->run();
