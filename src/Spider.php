@@ -6,6 +6,7 @@ class Spider
 {
     private $loop;
     private $curl;
+    /** @var callable $parser */
     private $parser;
     private $running = false;
     private $cookieFile;
@@ -53,11 +54,17 @@ class Spider
         }
     }
 
-    public function __construct()
+    public function defaultParser($content)
+    {
+        $parser = new \DiDom\Document();
+        return $parser->load($content);
+    }
+
+    public function __construct($parser = ['\Grab\Spider', 'defaultParser'])
     {
         $this->loop = \React\EventLoop\Factory::create();
         $this->curl = new \KHR\React\Curl\Curl($this->loop);
-        $this->parser = new \DiDom\Document();
+        $this->parser = $parser;
     }
 
     /**
@@ -172,7 +179,7 @@ class Spider
             }
             return false;
         }
-        $parser = $this->parser->load($content);
+        $parser = ($this->parser)($content);
         return $this->$taskName($parser, $params, $content);
     }
 

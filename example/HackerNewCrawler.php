@@ -35,7 +35,9 @@ class HackerNewCrawler extends \Grab\Spider
     public function taskTopic($parser, $task)
     {
         $products = $parser->find('title');
-        echo trim($products[0]->text()) . PHP_EOL;
+        if (isset($products)) {
+            echo trim($products[0]->text()) . PHP_EOL;
+        }
     }
 }
 

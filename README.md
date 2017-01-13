@@ -66,3 +66,24 @@ $bot->setCurlSetting([
 //$bot->loadProxy(__DIR__ . '/proxy_list.txt');
 $bot->run();
 ```
+## Simple DI from change parser
+
+```php 
+
+    $parser = new \DiDom\Document();
+    $bot = new HackerNewCrawler([$parser, 'load']);
+
+    $bot = new HackerNewCrawler(function ($content) {
+        $parser = new \DiDom\Document();
+        return $parser->load($content);
+    });
+    
+    $bot = new HackerNewCrawler(function ($content) {
+        return simplexml_load_string($content);
+    });
+    
+    $bot = new HackerNewCrawler(function ($content) {
+        return new \SoapClient($content);
+    });
+
+```
