@@ -54,7 +54,7 @@ class Spider
         }
     }
 
-    public function defaultParser($content)
+    public static function defaultParser($content)
     {
         $parser = new \DiDom\Document();
         return $parser->load($content);
